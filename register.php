@@ -69,7 +69,7 @@ if(isset($_POST['submit']))
                         lettersonly: true,
                         remote: {
                             url: "check-username.php",
-                            type: "post",
+                            type: "post"
                         }
                     },
                     password: {
@@ -77,13 +77,13 @@ if(isset($_POST['submit']))
                         maxlength: 15,
                         required: true,
                         lettersonly: true
-                    },
+                    }
                 },
                 messages: {
                     login:{
                         remote: "This username is already taken! Try another."
                         }
-                },
+                }
             });
         });
     </script>

@@ -84,7 +84,7 @@ if(isset($_POST['submit'])) {
                             maxlength: 15,
                             required: true,
                             lettersonly: true
-                        },
+                        }
                     },
                     highlight: function (element) {
                         $(element).closest('.control-group').addClass('has-error');

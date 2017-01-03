@@ -137,7 +137,7 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
                     format: 'yyyy-mm-dd',
                     container: container,
                     todayHighlight: true,
-                    autoclose: true,
+                    autoclose: true
                 });
                 $("a.show-block").click(function () {
                     var $t = $(this), alt = $t.data('alt');
@@ -151,44 +151,44 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
                         name:{
                             required: true,
                             minlength: 2,
-                            maxlength: 10,
+                            maxlength: 10
                         },
                         date:{
-                            required: true,
+                            required: true
                         },
                         deps:{
-                            required:true,
+                            required:true
                         },
                         pos:{
-                            required:true,
+                            required:true
                         },
                         type:{
-                            required:true,
+                            required:true
                         },
                         count_hour:{
-                            required:true,
+                            required:true
                         }
                     },
                     messages:{
                         name:{
                             required: "This field is required",
                             minlength: "Name must be at least 2 characters",
-                            maxlength: "Maximum number of characters - 10",
+                            maxlength: "Maximum number of characters - 10"
                         },
                         date:{
-                            required: "This field is required",
+                            required: "This field is required"
                         },
                         deps:{
-                            required: "This field is required",
+                            required: "This field is required"
                         },
                         pos:{
-                            required: "This field is required",
+                            required: "This field is required"
                         },
                         type:{
-                            required: "This field is required",
+                            required: "This field is required"
                         },
                         count_hour:{
-                            required: "This field is required",
+                            required: "This field is required"
                         }
                     },
                     submitHandler: function(form) {
@@ -210,7 +210,7 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
                                 dep:dep,
                                 pos:pos,
                                 type:type,
-                                count_hour:count_hour,
+                                count_hour:count_hour
 
                             },
                            dataType: 'json',
@@ -218,7 +218,7 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
                                 $("#suc").html(data.message);
                             }
                         });
-                    },
+                    }
                 });
             });
         </script>

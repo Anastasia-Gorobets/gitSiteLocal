@@ -56,9 +56,10 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
                 var id_type = $("#id_type").val();
                 var sorted = $("input[name=sorted]:checked").val();
                 var d=$('input[name=del]:checked').val();
+                var del="";
                 if(d!= undefined){
-                    var del=d;
-                }else var del="";
+                     del=d;
+                }else del="";
                 var page=str.innerHTML;
                 setTimeout(
                     function()
