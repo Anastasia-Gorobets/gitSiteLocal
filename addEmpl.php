@@ -25,7 +25,7 @@ if(isset($_POST['type'])){
     }
 }
 $name=dataProcessing($name);
-$birthday=dataProcessing($name);
+$birthday=dataProcessing($birthday);
 $dep=dataProcessing($dep);
 $pos=dataProcessing($pos);
 $type=dataProcessing($type);
