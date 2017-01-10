@@ -8,7 +8,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
     <link rel="stylesheet" href="css/site.css">
-    <title>Sign in</title>
+    <title>Main</title>
     <style>
     </style>
 </head>
