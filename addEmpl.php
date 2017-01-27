@@ -1,8 +1,8 @@
 <?php
 require "config/settings_config.php";
-require "Employee.php";
-require "EmployeeHour.php";
-require "EmployeeRate.php";
+require "classes/Employee.php";
+require "classes/EmployeeHour.php";
+require "classes/EmployeeRate.php";
 require "dataProcessing.php";
 if(isset($_POST['name'])){
     $name=$_POST['name'];
