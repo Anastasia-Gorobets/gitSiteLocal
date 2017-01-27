@@ -53,9 +53,9 @@ $start=abs($page*$perPage);
 $empl=$db->getEmployees($where,$start,$perPage);
 ?>
     <?php
-    if(count($empl)<=0){
-        echo "<h4>Sorry, no matches found</h4>";
-    }else {
+    if(count($empl)<=0){?>
+        <h4>Sorry, no matches found</h4>
+   <?php }else {
         ?>
         <table class="table table-striped">
             <thead>
@@ -70,16 +70,16 @@ $empl=$db->getEmployees($where,$start,$perPage);
             </thead>
             <tbody>
             <?php
-            for ($i = 0; $i < count($empl); $i++) {
-                echo "<tr>";
-                echo "<td>" . $empl[$i]['name'] . "</td>";
-                echo "<td>" . $empl[$i]['birthday'] . "</td>";
-                echo "<td>" . $empl[$i]['title_dep'] . "</td>";
-                echo "<td>" . $empl[$i]['title_pos'] . "</td>";
-                echo "<td>" . $empl[$i]['title_type'] . "</td>";
-                echo "<td>" . $empl[$i]['salary'] . "</td>";
-                echo "</tr>";
-            }
+            for ($i = 0; $i < count($empl); $i++) {?>
+                <tr>
+                    <td> <?php echo $empl[$i]['name'] ?> </td>
+                    <td><?php echo $empl[$i]['birthday'] ?></td>
+                    <td><?php echo $empl[$i]['title_dep'] ?></td>
+                    <td><?php echo $empl[$i]['title_pos'] ?></td>
+                    <td><?php echo $empl[$i]['title_type'] ?></td>
+                    <td><?php echo $empl[$i]['salary'] ?></td>
+                </tr>
+            <?php }
             ?>
             </tbody>
         </table>
@@ -97,11 +97,11 @@ $empl=$db->getEmployees($where,$start,$perPage);
             makePager($iCurr, $iLastPage, $iLeftLimit, $iRightLimit);
         } else {
             for ($i = 1; $i <= $num; $i++) {
-                if ($i - 1 == $iCurr - 1) {
-                    echo '<a class="active-page" href="" >'.$i.'</a>';
-                } else {
-                    echo '<a id="page" href="" onclick="filterUser(this); return false;">'.$i.'</a>';
-                }
+                if ($i - 1 == $iCurr - 1) {?>
+                    <a class="active-page" href="" ><?php echo $i?></a>
+                <?php } else {?>
+                    <a id="page" href="" onclick="filterUser(this); return false;"><?php echo $i?></a>
+               <?php }
             }
         }
     }
@@ -109,29 +109,29 @@ $empl=$db->getEmployees($where,$start,$perPage);
     {
         if ($iCurr > $iLeft && $iCurr < ($iEnd - $iRight)) {
             for ($i = $iCurr - $iLeft; $i <= $iCurr + $iRight; $i++) {
-                if ($i-1 == $iCurr-1) {
-                    echo '<a class="active-page" href="" >'.$i.'</a>';
-                } else {
-                    echo '<a id="page" href="" onclick="filterUser(this); return false;">'.$i.'</a>';
-                }
+                if ($i-1 == $iCurr-1) {?>
+                    <a class="active-page" href="" ><?php echo $i?></a>
+                <?php } else {?>
+                    <a id="page" href="" onclick="filterUser(this); return false;"><?php echo $i?></a>
+                <?php }
             }
         } elseif ($iCurr <= $iLeft) {
             $iSlice = 1 + $iLeft - $iCurr;
             for ($i = 1; $i <= $iCurr + ($iRight + $iSlice); $i++) {
-                if ($i-1 == $iCurr-1) {
-                    echo '<a class="active-page" href="" >'.$i.'</a>';
-                } else {
-                    echo '<a id="page" href="" onclick="filterUser(this); return false;">'.$i.'</a>';
-                }
+                if ($i-1 == $iCurr-1) {?>
+                    <a class="active-page" href="" ><?php echo $i?></a>
+                <?php } else {?>
+                    <a id="page" href="" onclick="filterUser(this); return false;"><?php echo $i?></a>
+             <?php   }
             }
         } else {
             $iSlice = $iRight - ($iEnd - $iCurr);
             for ($i = $iCurr - ($iLeft + $iSlice); $i <= $iEnd; $i++) {
-                if ($i-1 == $iCurr-1) {
-                    echo '<a class="active-page" href="" >'.$i.'</a>';
-                } else {
-                    echo '<a id="page" href="" onclick="filterUser(this); return false;">'.$i.'</a>';
-                }
+                if ($i-1 == $iCurr-1) {?>
+                    <a class="active-page" href="" ><?php echo $i?></a>
+                <?php } else {?>
+                    <a id="page" href="" onclick="filterUser(this); return false;"><?php echo $i?></a>
+                <?php   }
             }
         }
     }

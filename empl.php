@@ -115,35 +115,27 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
                 <select class="form-control" id="dep_id" name="deps" onchange="filterUser(this.value)">
                     <option  value="">Choose department</option>
                     <?php
-                    for($i=0;$i<count($depart);$i++){
-                        if($d==$depart[$i]['title_dep']){
-                            echo '<option selected  value="'.$depart[$i]['id'].'" >'.$depart[$i]['title_dep'].'</option>';
-                        }else  echo '<option  value="'.$depart[$i]['id'].'" >'.$depart[$i]['title_dep'].'</option>';
-                    }
+                    for($i=0;$i<count($depart);$i++){?>
+                        "'.$depart[$i]['id'].'"
+                     <option  value="<?php echo $depart[$i]['id']?>"><?php echo $depart[$i]['title_dep'] ?></option>
+                  <?php  }
                     ?>
                 </select>
                 <select class="form-control" id="id_pos" name="pos" onchange="filterUser(this.value)">
                     <option  value="">Choose position</option>
                     <?php
-                    for($i=0;$i<count($position);$i++){
-                        if($p==$position[$i]['title_pos']){
-                            echo '<option selected  value="'.$position[$i]['id'].'" >'.$position[$i]['title_pos'].'</option>';
-                        }else  echo '<option  value="'.$position[$i]['id'].'" >'.$position[$i]['title_pos'].'</option>';
-                    }
+                    for($i=0;$i<count($position);$i++){?>
+                          <option  value="<?php echo $position[$i]['id']?>" ><?php echo $position[$i]['title_pos']?></option>
+                 <?php   }
                     ?>
                 </select>
 
                 <select class="form-control" id="id_type" name="type" onchange="filterUser(this.value)">
                     <option value="">Choose payment</option>
                     <?php
-                    for($i=0;$i<count($types);$i++){
-                        if($t==$types[$i]['title_type']){
-                            echo '<option selected  value="'.$types[$i]['id'].'" >' . $types[$i]['title_type'] . '</option>';
-                        }
-                        else {
-                            echo '<option value="'.$types[$i]['id'].'" >' . $types[$i]['title_type'] . '</option>';
-                        }
-                    }
+                    for($i=0;$i<count($types);$i++){?>
+                          <option value="<?php echo $types[$i]['id']?>" ><?php echo $types[$i]['title_type']?></option>';
+                   <?php }
                     ?>
                 </select>
                 <br>
@@ -165,41 +157,39 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
         ?>
         <div class="container">
             <?php
-            if(count($empl)<=0){
-                echo "<h4>Sorry, no matches found</h4>";
-            }else {
+            if(count($empl)<=0){?>
+                <h4>Sorry, no matches found</h4>
+            <?php }else {
                 ?>
+               <div id=usersHint>
+                   <table class="table table-striped">
+                       <thead>
+                       <tr>
+                           <th>Name</th>
+                           <th>Birthday</th>
+                           <th>Department</th>
+                           <th>Position</th>
+                           <th>Payment type</th>
+                           <th>Salary</th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                       <?php
+                       for ($i = 0; $i < count($empl); $i++) {?>
+                           <tr>
+                          <td> <?php echo $empl[$i]['name'] ?> </td>
+                           <td><?php echo $empl[$i]['birthday'] ?></td>
+                          <td><?php echo $empl[$i]['title_dep'] ?></td>
+                           <td><?php echo $empl[$i]['title_pos'] ?></td>
+                           <td><?php echo $empl[$i]['title_type'] ?></td>
+                          <td><?php echo $empl[$i]['salary'] ?></td>
+                          </tr>
+                      <?php }
+                       ?>
+                       </tbody>
+                   </table>
+            <br>
                 <?php
-                echo  "<div id=usersHint>";
-                ?>
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Birthday</th>
-                        <th>Department</th>
-                        <th>Position</th>
-                        <th>Payment type</th>
-                        <th>Salary</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    for ($i = 0; $i < count($empl); $i++) {
-                        echo "<tr>";
-                        echo "<td>" . $empl[$i]['name'] . "</td>";
-                        echo "<td>" . $empl[$i]['birthday'] . "</td>";
-                        echo "<td>" . $empl[$i]['title_dep'] . "</td>";
-                        echo "<td>" . $empl[$i]['title_pos'] . "</td>";
-                        echo "<td>" . $empl[$i]['title_type'] . "</td>";
-                        echo "<td>" . $empl[$i]['salary'] . "</td>";
-                        echo "</tr>";
-                    }
-                    ?>
-                    </tbody>
-                </table>
-                <?php
-                echo "<br>";
                 $all=$db->getall();
                 $count_empl=count($all);
                 $perPage=20;
@@ -212,29 +202,29 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
                 {
                     if ($iCurr > $iLeft && $iCurr < ($iEnd - $iRight)) {
                         for ($i = $iCurr - $iLeft; $i <= $iCurr + $iRight; $i++) {
-                            if ($i-1 == $iCurr-1) {
-                                echo '<a class="active-page" href="" >'.$i.'</a>';
-                            } else {
-                                echo '<a id="page" href="" onclick="filterUser(this); return false;">'.$i.'</a>';
-                            }
+                            if ($i-1 == $iCurr-1) {?>
+                                <a class="active-page" href="" ><?php echo $i?></a>
+                            <?php } else {?>
+                                <a id="page" href="" onclick="filterUser(this); return false;"><?php echo $i?></a>
+                            <?php }
                         }
                     } elseif ($iCurr <= $iLeft) {
                         $iSlice = 1 + $iLeft - $iCurr;
                         for ($i = 1; $i <= $iCurr + ($iRight + $iSlice); $i++) {
-                            if ($i-1 == $iCurr-1) {
-                                echo '<a class="active-page" href="" >'.$i.'</a>';
-                            } else {
-                                echo '<a id="page" href="" onclick="filterUser(this); return false;">'.$i.'</a>';
-                            }
+                            if ($i-1 == $iCurr-1) {?>
+                                <a class="active-page" href="" ><?php echo $i?></a>
+                            <?php } else {?>
+                                <a id="page" href="" onclick="filterUser(this); return false;"><?php echo $i?></a>
+                            <?php   }
                         }
                     } else {
                         $iSlice = $iRight - ($iEnd - $iCurr);
                         for ($i = $iCurr - ($iLeft + $iSlice); $i <= $iEnd; $i++) {
-                            if ($i-1 == $iCurr-1) {
-                                echo '<a class="active-page" href="" >'.$i.'</a>';
-                            } else {
-                                echo '<a id="page" href="" onclick="filterUser(this); return false;">'.$i.'</a>';
-                            }
+                            if ($i-1 == $iCurr-1) {?>
+                                <a class="active-page" href="" ><?php echo $i?></a>
+                            <?php } else {?>
+                                <a id="page" href="" onclick="filterUser(this); return false;"><?php echo $i?></a>
+                            <?php   }
                         }
                     }
                 }
@@ -244,16 +234,17 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
                     } else {
 
                         for ($i = 1; $i <= $num; $i++) {
-                            if ($i - 1 == $iCurr - 1) {
-                                echo '<a class="active-page" href="" >'.$i.'</a>';
-                            } else {
-                                echo '<a id="page" href="" onclick="filterUser(this); return false;">'.$i.'</a>';
-                            }
+                            if ($i - 1 == $iCurr - 1) {?>
+                                <a class="active-page" href="" ><?php echo $i?></a>
+                            <?php } else {?>
+                                <a id="page" href="" onclick="filterUser(this); return false;"><?php echo $i?></a>
+                            <?php   }
                         }
                     }
-                }
-                echo "</div>";
-            }
+                }?>
+               </div>
+                </div>
+           <?php }
             ?>
         </body>
         </html>

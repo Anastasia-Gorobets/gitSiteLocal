@@ -2,7 +2,7 @@
 $db_conf=require "db/database_config.php";
 $mysqli = new mysqli($db_conf['host'], $db_conf['username'], $db_conf['password'],$db_conf['db_name']);
 if ($mysqli->connect_errno) {
-    echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    echo "Error with connect to DB: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
 if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
 {
@@ -77,39 +77,35 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
                             <label for="date">Birthday</label>
                             <input class="form-control" required id="date" name="date" placeholder="YYYY-MM-DD" type="text"/>
                         </div>
-                        <select class="form-group" id="dep_id" name="deps">
+                        <select class="form-control" id="dep_id" name="deps">
                             <option  value="">Choose department</option>
                             <?php
-                            for($i=0;$i<count($depart);$i++){
-                                if($d==$depart[$i]['title_dep']){
-                                    echo '<option selected  value="'.$depart[$i]['id'].'" >'.$depart[$i]['title_dep'].'</option>';
-                                }else  echo '<option  value="'.$depart[$i]['id'].'" >'.$depart[$i]['title_dep'].'</option>';
-                            }
+                            for($i=0;$i<count($depart);$i++){?>
+                                "'.$depart[$i]['id'].'"
+                                <option  value="<?php echo $depart[$i]['id']?>"><?php echo $depart[$i]['title_dep'] ?></option>
+                            <?php  }
                             ?>
                         </select>
                         <br>
-                        <select class="form-group" id="pos_id" name="pos">
+
+                        <select class="form-control" id="pos_id" name="pos">
                             <option  value="">Choose position</option>
                             <?php
-                            for($i=0;$i<count($position);$i++){
-                                if($p==$position[$i]['title_pos']){
-                                    echo '<option selected  value="'.$position[$i]['id'].'" >'.$position[$i]['title_pos'].'</option>';
-                                }else  echo '<option  value="'.$position[$i]['id'].'" >'.$position[$i]['title_pos'].'</option>';
-                            }
+                            for($i=0;$i<count($position);$i++){?>
+                                <option  value="<?php echo $position[$i]['id']?>" ><?php echo $position[$i]['title_pos']?></option>
+                            <?php   }
                             ?>
                         </select>
+
+
                         <br>
-                        <select class="form-group" id="type_id" name="type" onchange="checkPayment(this.value)">
+
+                        <select class="form-control" id="type_id" name="type" onchange="checkPayment(this.value)">
                             <option value="">Choose payment</option>
                             <?php
-                            for($i=0;$i<count($types);$i++){
-                                if($t==$types[$i]['title_type']){
-                                    echo '<option selected  value="'.$types[$i]['id'].'" >' . $types[$i]['title_type'] . '</option>';
-                                }
-                                else {
-                                    echo '<option value="'.$types[$i]['id'].'" >' . $types[$i]['title_type'] . '</option>';
-                                }
-                            }
+                            for($i=0;$i<count($types);$i++){?>
+                                <option value="<?php echo $types[$i]['id']?>" ><?php echo $types[$i]['title_type']?></option>';
+                            <?php }
                             ?>
                         </select>
                         <br>
