@@ -15,7 +15,7 @@
 <body>
 <div class="container">
     <?php
-    $db_conf=require "db/database_config.php";
+    $db_conf = require "db/database_config.php";
     $mysqli = new mysqli($db_conf['host'], $db_conf['username'], $db_conf['password'],$db_conf['db_name']);
     if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
     {

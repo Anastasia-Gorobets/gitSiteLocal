@@ -1,15 +1,15 @@
 <?php
 //the number of records per page
 if(isset($_GET['num_records'])){
-    $perPage=(int)$_GET['num_records'];
+    $perPage = (int)$_GET['num_records'];
 }else
-    $perPage=20;
-$id_dep=(int)$_GET['depId']; //id department
-$id_pos=(int)$_GET['id_pos']; //id position
-$id_type=(int)$_GET['id_type']; //id type
-$sorted=$_GET['sorted']; //sorted
+    $perPage = 20;
+$id_dep = (int)$_GET['depId']; //id department
+$id_pos = (int)$_GET['id_pos']; //id position
+$id_type = (int)$_GET['id_type']; //id type
+$sorted = $_GET['sorted']; //sorted
 if(isset($_GET['page'])){
-    $page=$_GET['page'];
+    $page = $_GET['page'];
 }else{
     $page=1;
 }
@@ -18,19 +18,25 @@ if(!empty($id_dep)) {
     if($where != '') {
         $where .=" AND id_dep='$id_dep'";
     }
-    else  $where="id_dep='$id_dep'";
+    else  {
+        $where="id_dep='$id_dep'";
+    }
 }
 if(!empty($id_pos)) {
     if($where != '') {
         $where .=" AND id_pos='$id_pos'";
     }
-    else  $where="id_pos='$id_pos'";
+    else  {
+        $where="id_pos='$id_pos'";
+    }
 }
 if(!empty($id_type)) {
     if($where != '') {
         $where .=" AND id_type='$id_type'";
     }
-    else  $where="id_type='$id_type'";
+    else  {
+        $where = "id_type='$id_type'";
+    }
 }
 if(empty($where))$where='1';
 if(!empty($sorted)) {
@@ -41,19 +47,22 @@ if(!empty($sorted)) {
 if(isset($_GET['del']))
 {
     $del=$_GET['del'];
-    if($del=='del')
-    $where='1';
+    if($del == 'del')
+    $where = '1';
 }
 include "db/DataBase.php";
-$db=new DataBase();
+$db = new DataBase();
 //get the page number
-if (isset($_GET['page'])) $page=($_GET['page']-1); else $page=0;
+if (isset($_GET['page'])) $page=($_GET['page']-1);
+else{
+    $page=0;
+}
 //calculate the first operator to LIMIT
-$start=abs($page*$perPage);
-$empl=$db->getEmployees($where,$start,$perPage);
+$start = abs($page*$perPage);
+$empl = $db->getEmployees($where,$start,$perPage);
 ?>
     <?php
-    if(count($empl)<=0){?>
+    if(count($empl) <= 0){?>
         <h4>Sorry, no matches found</h4>
    <?php }else {
         ?>
@@ -85,9 +94,9 @@ $empl=$db->getEmployees($where,$start,$perPage);
         </table>
         <?php
     }
-    $emp=$db->getall($where);
-    $count_empl=count($emp);
-    $num=ceil($count_empl/$perPage);
+    $emp = $db->getall($where);
+    $count_empl = count($emp);
+    $num = ceil($count_empl/$perPage);
     $iCurr = (empty($_GET['page']) ? 1 : intval($_GET['page']));
     $iLastPage = $num;
     $iLeftLimit = 2;

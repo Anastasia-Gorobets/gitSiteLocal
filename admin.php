@@ -1,5 +1,5 @@
 <?php
-$db_conf=require "db/database_config.php";
+$db_conf = require "db/database_config.php";
 $mysqli = new mysqli($db_conf['host'], $db_conf['username'], $db_conf['password'],$db_conf['db_name']);
 if ($mysqli->connect_errno) {
     echo "Error with connect to DB: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -18,18 +18,25 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
         ?>
         <?php
         include "db/DataBase.php";
-        $db=new DataBase();
-        $depart=$db->getDepartments();
-        $position=$db->getPositions();
-        $types=$db->getTypes();
+        $db = new DataBase();
+        $depart = $db->getDepartments();
+        $position = $db->getPositions();
+        $types = $db->getTypes();
         if(!empty($dep)){
-            $d=$db->getDepartmentById($dep);}else $d='';
+            $d = $db->getDepartmentById($dep);}
+            else {
+                $d = '';
+            }
         if(!empty($pos)) {
             $p = $db->getPositionById($pos);
-        }else $p='';
+        }else {
+            $p = '';
+        }
         if(!empty($type)) {
             $t = $db->getTypeById($type);
-        }else $t='';
+        }else {
+            $t = '';
+        }
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -45,8 +52,8 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
             <title>Admin</title>
             <script>
                 function checkPayment(str){
-                    $p=$("#type_id option:selected" ).text();
-                    if($p=='hourly'){
+                    $p = $("#type_id option:selected" ).text();
+                    if($p == 'hourly'){
                         $("#count_hour_div").show('slow');
                     }else{
                         $("#count_hour_div").hide('slow');
@@ -127,8 +134,8 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
         <script>
             $().ready(function() {
-                var date_input=$('input[name="date"]');
-                var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+                var date_input = $('input[name="date"]');
+                var container = $('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
                 date_input.datepicker({
                     format: 'yyyy-mm-dd',
                     container: container,
@@ -188,12 +195,12 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
                         }
                     },
                     submitHandler: function(form) {
-                        var name= $("#name").val();
-                        var birthday=$("#date").val();
-                        var dep=$("#dep_id").val();
-                        var pos=$("#pos_id").val();
-                        var type=$("#type_id").val();
-                        var count_hour=$("#count_hour").val();
+                        var name = $("#name").val();
+                        var birthday = $("#date").val();
+                        var dep = $("#dep_id").val();
+                        var pos = $("#pos_id").val();
+                        var type = $("#type_id").val();
+                        var count_hour = $("#count_hour").val();
                         $("#addForm input").val("");
                         $("#addForm select").val("");
 

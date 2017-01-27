@@ -3,7 +3,8 @@ $db_conf=require "db/database_config.php";
 include "db/DataBase.php";
 $mysqli = new mysqli($db_conf['host'], $db_conf['username'], $db_conf['password'],$db_conf['db_name']);
 if ($mysqli->connect_errno) {
-    throw new Exception("Error connection with DB");}
+    throw new Exception("Error connection with DB");
+}
 if (isset($_COOKIE['id']) and isset($_COOKIE['hash'])) {
     $query = $mysqli->query("SELECT * FROM users WHERE user_id = '" . intval($_COOKIE['id']) . "' LIMIT 1");
     $userdata = $query->fetch_assoc();
@@ -56,7 +57,9 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash'])) {
                     var del = "";
                     if (d != undefined) {
                         del = d;
-                    } else del = "";
+                    } else {
+                        del = "";
+                    }
                     var page = str.innerHTML;
                     setTimeout(
                         function () {
