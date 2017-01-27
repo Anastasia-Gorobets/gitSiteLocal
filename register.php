@@ -1,6 +1,6 @@
 <?php
 $db_conf=require "db/database_config.php";
-require "dataProcessing.php";
+require "classes/userInputsValidation.php";
 $mysqli = new mysqli($db_conf['host'], $db_conf['username'], $db_conf['password'],$db_conf['db_name']);
 if ($mysqli->connect_errno) {
     throw new Exception("Error connection with DB");
@@ -9,8 +9,8 @@ $err=array();
 if(isset($_POST['submit']))
 {
     //data processing
-    $login=dataProcessing($_POST['login']);
-    $password=dataProcessing($_POST['password']);
+    $login=userInputsValidation::dataProcessing($_POST['login']);
+    $password=userInputsValidation::dataProcessing($_POST['password']);
     if(!preg_match("/^[a-zA-Z0-9]+$/",$login))
     {
         $err[] = "1";

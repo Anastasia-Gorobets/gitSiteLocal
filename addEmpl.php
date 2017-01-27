@@ -3,7 +3,7 @@ require "config/settings_config.php";
 require "classes/Employee.php";
 require "classes/EmployeeHour.php";
 require "classes/EmployeeRate.php";
-require "dataProcessing.php";
+require "classes/userInputsValidation.php";
 if(isset($_POST['name'])){
     $name=$_POST['name'];
 }
@@ -24,11 +24,11 @@ if(isset($_POST['type'])){
         }else $count_hour=0;
     }
 }
-$name=dataProcessing($name);
-$birthday=dataProcessing($birthday);
-$dep=dataProcessing($dep);
-$pos=dataProcessing($pos);
-$type=dataProcessing($type);
+$name=userInputsValidation::dataProcessing($name);
+$birthday=userInputsValidation::dataProcessing($birthday);
+$dep=userInputsValidation::dataProcessing($dep);
+$pos=userInputsValidation::dataProcessing($pos);
+$type=userInputsValidation::dataProcessing($type);
 $db_conf=require "db/database_config.php";
 $mysqli = new mysqli($db_conf['host'], $db_conf['username'], $db_conf['password'],$db_conf['db_name']);
 if ($mysqli->connect_errno) {

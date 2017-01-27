@@ -1,5 +1,5 @@
 <?php
-require "dataProcessing.php";
+require "classes/userInputsValidation.php";
 //generate random code
 function generateCode($length=6) {
     $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHI JKLMNOPRQSTUVWXYZ0123456789";
@@ -18,8 +18,8 @@ if ($mysqli->connect_errno) {
 $err=0;
 if(isset($_POST['submit'])) {
     //data processing
-    $login=dataProcessing($_POST['login']);
-    $password=dataProcessing($_POST['password']);
+    $login=userInputsValidation::dataProcessing($_POST['login']);
+    $password=userInputsValidation::dataProcessing($_POST['password']);
     if(!preg_match("/^[a-zA-Z0-9]+$/",$login))
     {
         $err[] = "1";
