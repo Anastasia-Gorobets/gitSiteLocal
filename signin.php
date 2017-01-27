@@ -59,11 +59,7 @@ if(isset($_POST['submit'])) {
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
-    <link rel="stylesheet" href="css/site.css">
+    <?php require_once 'headerInc.php'?>
     <link rel="stylesheet" href="css/signin.css">
     <title>Sign in</title>
     <script>
