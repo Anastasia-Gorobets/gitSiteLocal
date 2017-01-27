@@ -78,33 +78,33 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
                             <input class="form-control" required id="date" name="date" placeholder="YYYY-MM-DD" type="text"/>
                         </div>
                         <select class="form-control" id="dep_id" name="deps">
-                            <option  value="">Choose department</option>
+                            <option value="">Choose department</option>
                             <?php
-                            for($i=0;$i<count($depart);$i++){?>
-                                "'.$depart[$i]['id'].'"
-                                <option  value="<?php echo $depart[$i]['id']?>"><?php echo $depart[$i]['title_dep'] ?></option>
-                            <?php  }
-                            ?>
+                            foreach ($depart as $dep) {
+                                ?>
+                                <option value="<?php echo $dep['id'] ?>"><?php echo $dep['title_dep'] ?></option>
+                                <?php
+                            } ?>
                         </select>
                         <br>
 
                         <select class="form-control" id="pos_id" name="pos">
-                            <option  value="">Choose position</option>
+                            <option value="">Choose position</option>
                             <?php
-                            for($i=0;$i<count($position);$i++){?>
-                                <option  value="<?php echo $position[$i]['id']?>" ><?php echo $position[$i]['title_pos']?></option>
-                            <?php   }
+                            foreach ($position as $posit){?>
+                                <option value="<?php echo $posit['id'] ?>"><?php echo $posit['title_pos'] ?></option>
+                            <?php }
                             ?>
                         </select>
-
 
                         <br>
 
                         <select class="form-control" id="type_id" name="type" onchange="checkPayment(this.value)">
                             <option value="">Choose payment</option>
                             <?php
-                            for($i=0;$i<count($types);$i++){?>
-                                <option value="<?php echo $types[$i]['id']?>" ><?php echo $types[$i]['title_type']?></option>';
+                            foreach ($types as $type) {
+                                ?>
+                                <option value="<?php echo $type['id'] ?>"><?php echo $type['title_type'] ?></option>';
                             <?php }
                             ?>
                         </select>
