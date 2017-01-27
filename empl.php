@@ -177,14 +177,14 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash'])) {
                             </thead>
                             <tbody>
                             <?php
-                            for ($i = 0; $i < count($empl); $i++) { ?>
+                            foreach($empl as $emp) { ?>
                                 <tr>
-                                    <td> <?php echo $empl[$i]['name'] ?> </td>
-                                    <td><?php echo $empl[$i]['birthday'] ?></td>
-                                    <td><?php echo $empl[$i]['title_dep'] ?></td>
-                                    <td><?php echo $empl[$i]['title_pos'] ?></td>
-                                    <td><?php echo $empl[$i]['title_type'] ?></td>
-                                    <td><?php echo $empl[$i]['salary'] ?></td>
+                                    <td> <?php echo $emp['name'] ?> </td>
+                                    <td><?php echo $emp['birthday'] ?></td>
+                                    <td><?php echo $emp['title_dep'] ?></td>
+                                    <td><?php echo $emp['title_pos'] ?></td>
+                                    <td><?php echo $emp['title_type'] ?></td>
+                                    <td><?php echo $emp['salary'] ?></td>
                                 </tr>
                             <?php }
                             ?>

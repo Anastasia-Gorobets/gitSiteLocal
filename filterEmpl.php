@@ -1,18 +1,11 @@
 <?php
 //the number of records per page
-if(isset($_GET['num_records'])){
-    $perPage = (int)$_GET['num_records'];
-}else
-    $perPage = 20;
+$perPage = (isset($_GET['num_records']) ? (int)$_GET['num_records'] : 20);
 $id_dep = (int)$_GET['depId']; //id department
 $id_pos = (int)$_GET['id_pos']; //id position
 $id_type = (int)$_GET['id_type']; //id type
 $sorted = $_GET['sorted']; //sorted
-if(isset($_GET['page'])){
-    $page = $_GET['page'];
-}else{
-    $page=1;
-}
+$page=isset($_GET['page'])?(int)$_GET['page']:1;
 $where='';
 if(!empty($id_dep)) {
     if($where != '') {
@@ -79,14 +72,14 @@ $empl = $db->getEmployees($where,$start,$perPage);
             </thead>
             <tbody>
             <?php
-            for ($i = 0; $i < count($empl); $i++) {?>
+            foreach($empl as $emp) { ?>
                 <tr>
-                    <td> <?php echo $empl[$i]['name'] ?> </td>
-                    <td><?php echo $empl[$i]['birthday'] ?></td>
-                    <td><?php echo $empl[$i]['title_dep'] ?></td>
-                    <td><?php echo $empl[$i]['title_pos'] ?></td>
-                    <td><?php echo $empl[$i]['title_type'] ?></td>
-                    <td><?php echo $empl[$i]['salary'] ?></td>
+                    <td> <?php echo $emp['name'] ?> </td>
+                    <td><?php echo $emp['birthday'] ?></td>
+                    <td><?php echo $emp['title_dep'] ?></td>
+                    <td><?php echo $emp['title_pos'] ?></td>
+                    <td><?php echo $emp['title_type'] ?></td>
+                    <td><?php echo $emp['salary'] ?></td>
                 </tr>
             <?php }
             ?>
