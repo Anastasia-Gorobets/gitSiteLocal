@@ -128,7 +128,12 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
         <script>
-            $().ready(function() {
+
+            $(function() {
+                // Handler for .ready() called.
+            });
+
+            $(function() {
                 var date_input = $('input[name="date"]');
                 var container = $('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
                 date_input.datepicker({
