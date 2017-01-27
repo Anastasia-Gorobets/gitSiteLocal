@@ -64,7 +64,8 @@ if (!$stmt->bind_param("ssiiii", $name,$birthday,$dep,$pos,$type,$salary)) {
 if (!$stmt->execute()) {
     throw new Exception("Error  with DB");
 }
-$arr = array('message' => 'success');
+$message="Employee with name $name was added";
+$arr = array('message' => $message);
 echo json_encode($arr);
 die;
 
