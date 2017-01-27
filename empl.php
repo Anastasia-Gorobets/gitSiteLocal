@@ -155,7 +155,7 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash'])) {
                 </div>
                 <?php
                 $perPage = 20;
-                if (isset($_GET['page'])) $page = ($_GET['page'] - 1); else $page = 0;
+                $page = (isset($_GET['page']) ? $_GET['page']-1 : 0);
                 $start = abs($page * $perPage);
                 $where = '1'; ?>
                 <?php

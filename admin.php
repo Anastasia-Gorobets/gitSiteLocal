@@ -62,7 +62,7 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
             </script>
             <style>
                 .error{
-                    color:darkred;
+                    color:#8A0808;
                 }
             </style>
         </head>
