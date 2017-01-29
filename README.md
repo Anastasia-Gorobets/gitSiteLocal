@@ -26,3 +26,5 @@ ServerAlias Your server alias
 8.Choose a feature, for example Emplyees.If you are admin you can click Admin Panel and add a new employee.
 9.You can choose records number for printing, choose department,position,payment.
 10.For logout click Logout in header panel.
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Anastasia-Gorobets/gitSiteLocal/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Anastasia-Gorobets/gitSiteLocal/?branch=master)
