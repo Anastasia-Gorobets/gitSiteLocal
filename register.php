@@ -20,13 +20,15 @@ if(isset($_POST['submit']))
         $err[] = "1";
     }
     if (!preg_match("/^[a-zA-Z0-9]+$/", $password)) {
-        $err = "1";
+        $err[] = "1";
     }
     if (strlen($password) < 3 or strlen($password) > 15) {
-        $err = "1";
+        $err[] = "1";
     }
     $query = $mysqli->query("SELECT * FROM users WHERE user_login='.$login.");
-    if($query->num_rows >0)$err[]="1";
+    if($query->num_rows >0){
+        $err[]="1";
+    }
     if(count($err) == 0)
     {
         $password = md5(md5(trim($password)));
