@@ -1,10 +1,13 @@
 
-.navbar{
-    background-color: antiquewhite;
+.navbar {
+    background-color: #faebd7;
 }
-.navbar-default .navbar-nav > .active{
-    color: #000; background-color:#e0e0e0;
+
+.navbar-default .navbar-nav > .active {
+    color: #000;
+    background-color: #e0e0e0;
 }
+
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
@@ -12,32 +15,54 @@
     background-color: #e0e0e0;
 }
 
-#suc{color:green;}
+#suc {
+    color: #00aa00;
+}
 
-#addEmplButton{
-    padding: 5px;
-    border: solid 2px #b94a48;
-    border-radius: 4px;
-    text-decoration: none;
-    color:black;
-    font-weight: 600;
-}
-#addEmplButton:hover{
-    color:darkred;
-}
-#block{
+#block {
     display: none;
-    width: 600px;
-    margin-top:10px;
+    margin-top: 10px;
 }
+
 #parent {
     display: table;
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 }
 
 #child {
     display: table-cell;
     vertical-align: middle;
-    text-align:center;
+    text-align: center;
 }
+
+#addEmplButton, #addButton, #allEmpl {
+    width: 100%;
+}
+
+#addButton, #addEmplButton, #allEmpl {
+    background-color: #faebd7;
+    border: 1px solid #808080;
+    color: #000000;
+}
+
+#addEmplButton:active, #addEmplButton:link, #addEmplButton:focus, #addButton:active, #addButton:link, #addButton:focus, #allEmpl:active, #allEmpl:link, #allEmpl:focus {
+    border: 1px solid #808080;
+}
+
+#addEmplButton:hover, #addButton:hover, #allEmpl:hover {
+    background-color: #e4b9b9;
+}
+
+.error {
+    color: #8A0808;
+}
+
+a#allEmpl {
+    text-decoration: none;
+    color: #000000;
+
+}
+
+
+

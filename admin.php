@@ -64,22 +64,18 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
                     color:black;
 
                 }
-
-
-
-                input.form-control{
-                    margin-right: 0px;
+                input, select {
+                    width: 100%;
                 }
-
-                #name,#date{
-                   width: 520px;
+                .col-md-6,  .col-md-4,  .col-md-3 {
+                    padding: 0;
                 }
-                option{
-                    width: 370px;
+                #addButton {
+                    margin-top: 10px;
+                    margin-bottom:10px
                 }
-                #submit{
-                    margin-top: 5px;
-                    width: 100px;
+                #count_hour_div, #block{
+                    width: 100%;
                 }
             </style>
         </head>
@@ -90,62 +86,71 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
             ?>
             <br>
             <div class="jumbotron">
-                <a id="allEmpl" href="empl.php" style="float:right"><h5>See all employees</h5></a>
-
-                <a class="show-block" id="addEmplButton" href="#block" data-alt="Hide">Add new employeer</a><br>
+                <div class="row">
+                    <div class="col-md-3  col-sm-3 col-xs-12"><a class="show-block btn btn-default" role="button" id="addEmplButton" href="#block">Add new employeer</a></div>
+                    <div class="col-md-3 col-sm-3 col-xs-12"> <a id="allEmpl" class="btn btn-default" role="button" href="empl.php">See all employees</a></div>
+                </div>
                 <div id="block">
-                <form role="form" class="form-inline" id="addForm" method="post">
-                <div class="row col-md-12">
-                    <div class="col-md-6 sol-sm-6">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                        <input type="text" class="form-control" required id="date" name="date" placeholder="YYYY-MM-DD">
-                    </div>
-                </div><br>
-                    <div class="row col-md-12">
-                        <div class="col-md-4 sol-sm-4">
-                            <select class="form-control" id="dep_id" name="deps">
-                                <option value="">Choose department</option>
-                                <?php
-                                foreach ($depart as $dep) {
-                                    ?>
-                                    <option value="<?php echo $dep['id'] ?>"><?php echo $dep['title_dep'] ?></option>
+                    <form role="form" id="addForm" method="post">
+                        <div class="row">
+                            <div class="col-md-6"><input type="text" class="form-control" name="name" id="name"
+                                                         placeholder="Enter name"></div>
+                            <div class="col-md-6"><input type="text" class="form-control" required id="date" name="date"
+                                                         placeholder="YYYY-MM-DD"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 ">
+                                <select class="form-control" id="dep_id" name="deps">
+                                    <option value="">Choose department</option>
                                     <?php
-                                } ?>
-                            </select>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <select class="form-control" id="pos_id" name="pos">
-                                <option value="">Choose position</option>
-                                <?php
-                                foreach ($position as $posit){?>
-                                    <option value="<?php echo $posit['id'] ?>"><?php echo $posit['title_pos'] ?></option>
-                                <?php }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <select class="form-control" id="type_id" name="type" onchange="checkPayment(this.value)">
-                                <option value="">Choose payment</option>
-                                <?php
-                                foreach ($types as $type) {
+                                    foreach ($depart as $dep) {
+                                        ?>
+                                        <option value="<?php echo $dep['id'] ?>"><?php echo $dep['title_dep'] ?></option>
+                                        <?php
+                                    } ?>
+                                </select>
+                            </div>
+                            <div class="col-md-4 ">
+                                <select class="form-control" id="pos_id" name="pos">
+                                    <option value="">Choose position</option>
+                                    <?php
+                                    foreach ($position as $posit) {
+                                        ?>
+                                        <option value="<?php echo $posit['id'] ?>"><?php echo $posit['title_pos'] ?></option>
+                                    <?php }
                                     ?>
-                                    <option value="<?php echo $type['id'] ?>"><?php echo $type['title_type'] ?></option>';
-                                <?php }
-                                ?>
-                            </select>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-control" id="type_id" name="type" onchange="checkPayment(this.value)">
+                                    <option value="">Choose payment</option>
+                                    <?php
+                                    foreach ($types as $type) {
+                                        ?>
+                                        <option value="<?php echo $type['id'] ?>"><?php echo $type['title_type'] ?></option>';
+                                    <?php }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group" id="count_hour_div" style="display: none">
-                        <label for="count_hour">Number of hours</label>
-                        <input type="text" class="form-control" name="count_hour" id="count_hour" placeholder="Enter number of hours">
-                    </div>
-                    <button name="submit" id="submit" value="" type="submit" class="btn btn-large btn-primary btn-block">Add</button>
-                </form>
+                        <div class="row">
+                            <div id="count_hour_div" style="display: none">
+                            <div class="col-md-4"><input type="text" class="form-control" name="count_hour" id="count_hour" placeholder="Enter number                                of hours">
+                            </div>
+                                </div>
+                        </div>
 
+
+                        <div class="col-md-12 center-block">
+                            <button id="addButton" name="addButton" class="btn btn-primary center-block">
+                                Add
+                            </button>
+                        </div>
+                    </form>
                     <p id="suc"></p>
                     </div>
+                </div>
+            </div>
 
 
 
@@ -173,6 +178,16 @@ if (isset($_COOKIE['id']) and isset($_COOKIE['hash']))
                     $($t.attr('href')).stop().toggle('slow');
                     return false;
                 });
+
+                $("input").click(function () {
+                    $("#suc").text("");
+                }
+                );
+                $("select").click(function () {
+                        $("#suc").text("");
+                    }
+                );
+
                 $("#addForm").validate({
                     rules:{
                         name:{
