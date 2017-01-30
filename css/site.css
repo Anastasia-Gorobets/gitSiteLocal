@@ -37,7 +37,7 @@
 }
 
 #addEmplButton, #addButton, #allEmpl {
-    width: 100%;
+    width: 150px;
 }
 
 #addButton, #addEmplButton, #allEmpl {
@@ -61,7 +61,6 @@
 a#allEmpl {
     text-decoration: none;
     color: #000000;
-
 }
 
 
